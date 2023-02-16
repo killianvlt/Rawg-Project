@@ -13,7 +13,6 @@ export default function Game() {
   const url = `https://api.rawg.io/api/games/${params.id}?key=${key}`
   const urlTrailer = `https://api.rawg.io/api/games/${params.id}?key=${key}/movies`
   const [data, setData] = useState([])
-  const [dataTrailer, setDataTrailer] = useState([])
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
@@ -23,7 +22,6 @@ export default function Game() {
       .then((data) => setDataTrailer(data))
   }, [])
 
-  console.log(data)
   return (
     <>
       <div className="container mx-auto pt-14 flex flex-row items-center justify-between">

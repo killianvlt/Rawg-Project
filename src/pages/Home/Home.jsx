@@ -8,6 +8,7 @@ import Title from '../../components/Title/Title'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import Introduction from '../../components/Introduction/Introduction'
 import ShowMoreButton from '../../components/ShowMoreButton/ShowMoreButton'
+import ButtonLinkTo from '../../components/ButtonLinkTo/ButtonLinkTo'
 
 const key = import.meta.env.VITE_API_KEY
 const now = dayjs().format('YYYY-MM-DD')
@@ -27,11 +28,10 @@ export default function Home() {
 
   function handleClick() {
     setCount((prevValue) => prevValue + 1)
-    if (count == 0) {
+    if (count === 0) {
       setNbrsItems((prevValue) => prevValue + 9)
     }
-    console.log(nbrsItems)
-    if (count == 1) {
+    if (count === 1) {
       setNbrsItems((prevValue) => prevValue + 9)
       setIsHidden(false)
     }
@@ -46,8 +46,13 @@ export default function Home() {
         <Introduction />
       </div>
       <div className="container mx-auto">
-        <div className="mt-12">
+        <div className="flex flex-row justify-between items-center mt-8">
           <PlatformsFilter />
+          <ButtonLinkTo
+            cssClass="h-14 w-28 border-red-600 border-2 text-white hover:bg-red-600 duration-150"
+            name="Login"
+            route="/login"
+          />
         </div>
         <div className="grid grid-cols-3 gap-8 pb-10 mt-8">
           {data.slice(0, nbrsItems).map((e, index) => (
